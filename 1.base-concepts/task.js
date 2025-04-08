@@ -22,3 +22,29 @@ console.log(solveEquation(1, -3, 2));
 console.log(solveEquation(1, 2, 1)); 
 console.log(solveEquation(1, 0, -4)); 
 console.log(solveEquation(1, 0, 4)); 
+
+
+function calculateTotalMortgage(percent, contribution, amount, countMonths) {
+	const monthlyInterestRate = percent / 100 / 12;
+
+	const loanBody = amount - contribution;
+
+	if (loanBody <= 0) {
+		return 0;
+	}
+
+	const monthlyPayment = loanBody * (monthlyInterestRate + (monthlyInterestRate / (Math.pow(1 + monthlyInterestRate, countMonths) - 1)));
+
+	const totalAmount = contribution + monthlyPayment * countMonths;
+
+	const roundedTotalAmount = parseFloat(totalAmount.toFixed(2));
+
+	return roundedTotalAmount;
+}
+console.log(calculateTotalMortgage(10, 0, 50000, 12));   
+console.log(calculateTotalMortgage(10, 1000, 50000, 12)); 
+console.log(calculateTotalMortgage(10, 0, 20000, 24));  
+console.log(calculateTotalMortgage(10, 1000, 20000, 24)); 
+console.log(calculateTotalMortgage(10, 20000, 20000, 24)); 
+console.log(calculateTotalMortgage(10, 0, 10000, 36));   
+console.log(calculateTotalMortgage(15, 0, 10000, 36));   
