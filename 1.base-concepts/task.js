@@ -22,6 +22,7 @@ console.log(solveEquation(1, 0, -4));
 console.log(solveEquation(1, 0, 4));
 
 Задание 2
+
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
 	const monthlyPercent = (percent / 100) / 12;
 
@@ -35,10 +36,10 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
 
 	return roundedTotalAmount;
 }
-console.log(calculateTotalMortgage(10, 0, 50000, 12)); 
-console.log(calculateTotalMortgage(10, 1000, 50000, 12)); 
-console.log(calculateTotalMortgage(10, 0, 20000, 24)); 
+console.log(calculateTotalMortgage(10, 0, 50000, 12));
+console.log(calculateTotalMortgage(10, 1000, 50000, 12));
+console.log(calculateTotalMortgage(10, 0, 20000, 24));
 console.log(calculateTotalMortgage(10, 1000, 20000, 24));
-console.log(calculateTotalMortgage(10, 20000, 20000, 24)); 
-console.log(calculateTotalMortgage(10, 0, 10000, 36)); 
-console.log(calculateTotalMortgage(15, 0, 10000, 36)); 
+console.log(calculateTotalMortgage(10, 20000, 20000, 24));
+console.log(calculateTotalMortgage(10, 0, 10000, 36));
+console.log(calculateTotalMortgage(15, 0, 10000, 36));
