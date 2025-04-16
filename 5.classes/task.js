@@ -3,12 +3,12 @@ class PrintEditionItem {
 		this.name = name;
 		this.releaseDate = releaseDate;
 		this.pagesCount = pagesCount;
-		this.state = 100;
-		this.type = null;
+		this.state = 100; 
+		this.type = null; 
 	}
 
 	fix() {
-		this.state = Math.min(this.state * 1.5, 100);
+		this.state = Math.min(this.state * 1.5, 100); 
 	}
 
 	set state(newState) {
@@ -68,10 +68,10 @@ const sherlock = new PrintEditionItem(
 	1008
 );
 
-console.log(sherlock.releaseDate);
-console.log(sherlock.state);
+console.log(sherlock.releaseDate); 
+console.log(sherlock.state); 
 sherlock.fix();
-console.log(sherlock.state);
+console.log(sherlock.state); 
 
 const picknick = new FantasticBook(
 	"Аркадий и Борис Стругацкие",
@@ -80,8 +80,8 @@ const picknick = new FantasticBook(
 	168
 );
 
-console.log(picknick.author);
+console.log(picknick.author); 
 picknick.state = 10;
-console.log(picknick.state);
+console.log(picknick.state); 
 picknick.fix();
-console.log(picknick.state);
+console.log(picknick.state); 
