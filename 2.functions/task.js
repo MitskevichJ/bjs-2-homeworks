@@ -25,7 +25,7 @@ function getArrayParams(...arr) {
 		avg: avg
 	};
 }
-Задача 2
+
 function summElementsWorker(...arr) {
 	if (arr.length === 0) return 0;
 	return arr.reduce((sum, current) => sum + current, 0);
@@ -79,7 +79,6 @@ console.log(differenceEvenOddWorker(15, 97, 85, 64, 67, 10, 69, 40, 15, 35));
 console.log(averageEvenElementsWorker(1, 2, 3, 4, 5, 6, 7, 8, 9));
 console.log(averageEvenElementsWorker(15, 97, 85, 64, 67, 10, 69, 40, 15, 35));
 
-Задача 3
 function summElementsWorker(...arr) {
 	if (arr.length === 0) return 0;
 	return arr.reduce((acc, curr) => acc + curr, 0);
@@ -142,7 +141,7 @@ const arr = [
 	[30, 41, 55, 96, 62]
 ];
 
-console.log(makeWork(arr, summElementsWorker)); // 328
-console.log(makeWork(arr, differenceMaxMinWorker)); // 86
-console.log(makeWork(arr, differenceEvenOddWorker)); // 92
-console.log(makeWork(arr, averageEvenElementsWorker)); // 72
+console.log(makeWork(arr, summElementsWorker));
+console.log(makeWork(arr, differenceMaxMinWorker));
+console.log(makeWork(arr, differenceEvenOddWorker));
+console.log(makeWork(arr, averageEvenElementsWorker));
