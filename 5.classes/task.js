@@ -86,33 +86,42 @@ console.log(picknick.state);
 picknick.fix();
 console.log(picknick.state);
 // второе задание
-class PrintEdition {
-	constructor(author, name, releaseDate, pages) {
-		this.author = author;
+class PrintEditionItem {
+	constructor(name, releaseDate, state) {
 		this.name = name;
 		this.releaseDate = releaseDate;
-		this.pages = pages;
-		this.state = 100;
-	}
-
-	setDamage(damage) {
-		this.state = Math.max(0, this.state - damage);
-	}
-
-	restore() {
-		this.state = 100;
+		this.state = state;
 	}
 }
 
-class Book extends PrintEdition {
-	constructor(author, name, releaseDate, pages) {
-		super(author, name, releaseDate, pages);
+class Book extends PrintEditionItem {
+	constructor(author, name, releaseDate, state) {
+		super(name, releaseDate, state);
+		this.author = author;
 	}
 }
 
-class Magazine extends PrintEdition {
-	constructor(name, releaseDate, pages) {
-		super(null, name, releaseDate, pages);
+class DetectiveBook extends Book {
+	constructor(author, name, releaseDate, state) {
+		super(author, name, releaseDate, state);
+	}
+}
+
+class FantasticBook extends Book {
+	constructor(author, name, releaseDate, state) {
+		super(author, name, releaseDate, state);
+	}
+}
+
+class NovelBook extends Book {
+	constructor(author, name, releaseDate, state) {
+		super(author, name, releaseDate, state);
+	}
+}
+
+class Magazine extends PrintEditionItem {
+	constructor(name, releaseDate, state) {
+		super(name, releaseDate, state);
 	}
 }
 
@@ -123,60 +132,28 @@ class Library {
 	}
 
 	addBook(book) {
-		if (book instanceof PrintEdition && book.state > 30) {
-			const existingBook = this.findBookBy('name', book.name);
-			if (!existingBook) {
-				this.books.push(book);
-			} else {
-				console.log(`Книга "${book.name}" уже есть в библиотеке.`);
-			}
-		} else {
-			console.log("Книга не может быть добавлена из-за низкого состояния.");
+		if (book.state > 30) {
+			this.books.push(book);
 		}
 	}
 
-	findBookBy(key, value) {
-		return this.books.find(book => book[key] === value) || null;
+	findBookBy(type, value) {
+		for (let book of this.books) {
+			if (book[type] === value) {
+				return book;
+			}
+		}
+		return null;
 	}
 
 	giveBookByName(bookName) {
-		const bookIndex = this.books.findIndex(book => book.name === bookName);
-		if (bookIndex !== -1) {
-			return this.books.splice(bookIndex, 1)[0];
+		const index = this.books.findIndex(book => book.name === bookName);
+		if (index !== -1) {
+			return this.books.splice(index, 1)[0];
 		}
 		return null;
 	}
 }
 
-// Тестовый сценарий
-const library = new Library("Главная библиотека");
-
-const detectiveBook = new Book("Артур Конан Дойл", "Приключения Шерлока Холмса", 1905, 300);
-const fantasticBook = new Book("Айзек Азимов", "Я, робот", 1950, 250);
-const novelBook = new Book("Лев Толстой", "Война и мир", 1869, 1200);
-const magazine = new Magazine("Наука и жизнь", 2023, 50);
-
-library.addBook(detectiveBook);
-library.addBook(fantasticBook);
-library.addBook(novelBook);
-library.addBook(magazine);
-
-let bookToFind = library.findBookBy("releaseDate", 1919);
-if (!bookToFind) {
-	bookToFind = new Book("Неизвестный автор", "Книга 1919 года", 1919, 400);
-	library.addBook(bookToFind);
-}
-
-const bookToGive = library.giveBookByName("Война и мир");
-console.log("Книга выдана:", bookToGive ? bookToGive.name : "Книга не найдена");
-
-if (bookToGive) {
-	bookToGive.setDamage(70);
-	console.log("Состояние книги после повреждения:", bookToGive.state);
-	bookToGive.restore();
-	console.log("Состояние книги после восстановления:", bookToGive.state);
-	library.addBook(bookToGive);
-}
-
-console.log("Количество книг в библиотеке:", library.books.length);
-console.log("Содержимое библиотеки:", library.books.map(book => book.name));
+// Пример использования
+const library = new Library("Библиотека имени Ленина");
